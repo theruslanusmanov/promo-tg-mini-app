@@ -67,5 +67,8 @@ COPY --from=build /bin/server /bin/
 # Expose the port that the application listens on.
 EXPOSE 3000
 
+# Copy the environment file into the container
+COPY .env .env
+
 # What the container should run when it is started.
 CMD ["/bin/server"]
