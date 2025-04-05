@@ -47,4 +47,11 @@ services:
 # secrets:
 #   db-password:
 #     file: db/password.txt
-
+  postgres:
+    image: postgres:17.4
+    environment:
+      POSTGRES_DB: "promodb"
+      POSTGRES_USER: "promopguser"
+      POSTGRES_PASSWORD: "password"
+    ports:
+      - "5432:5432"
