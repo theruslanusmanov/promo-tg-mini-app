@@ -7,7 +7,7 @@
 # Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
 
 ARG RUST_VERSION=1.83.0
-ARG APP_NAME=promo-tg-mini-app
+ARG APP_NAME=promo-api
 
 ################################################################################
 # Create a stage for building the application.
@@ -17,7 +17,7 @@ ARG APP_NAME
 WORKDIR /app
 
 # Install host build dependencies.
-RUN apk add --no-cache clang lld musl-dev git
+RUN apk add --no-cache clang lld musl-dev git libc-dev pkgconfig openssl-dev
 
 # Build the application.
 # Leverage a cache mount to /usr/local/cargo/registry/
@@ -61,14 +61,14 @@ RUN adduser \
     appuser
 USER appuser
 
+# Copy the environment file into the container
+COPY .env .env
+
 # Copy the executable from the "build" stage.
 COPY --from=build /bin/server /bin/
 
 # Expose the port that the application listens on.
 EXPOSE 3000
 
-# Copy the environment file into the container
-COPY .env .env
-
 # What the container should run when it is started.
-CMD ["/bin/server"]
+CMD ["/bin/"]

@@ -78,7 +78,7 @@ async fn main() {
 
     // build our application with some routes
     let app = Router::new()
-        .route("/user/list", get(list_users))
+        .route("/", get(list_users))
         .route("/user/create", post(create_user))
         .with_state(pool);
 
