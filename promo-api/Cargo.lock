@@ -554,11 +554,10 @@ checksum = "8b870d8c151b6f2fb93e84a13146138f05d02ed11c7e7c54f8826aaaf7c9f184"
 
 [[package]]
 name = "pq-sys"
-version = "0.7.1"
+version = "0.6.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "41c852911b98f5981956037b2ca976660612e548986c30af075e753107bc3400"
+checksum = "f6cc05d7ea95200187117196eee9edd0644424911821aeb28a18ce60ea0b8793"
 dependencies = [
- "libc",
  "vcpkg",
 ]
 

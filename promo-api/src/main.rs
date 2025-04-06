@@ -9,16 +9,19 @@ use diesel::{Connection, PgConnection};
 use diesel_migrations::{embed_migrations, EmbeddedMigrations, MigrationHarness};
 use dotenvy::dotenv;
 
+
 // this embeds the migrations into the application binary
 // the migration path is relative to the `CARGO_MANIFEST_DIR`
 pub const MIGRATIONS: EmbeddedMigrations = embed_migrations!("migrations/");
 
 #[tokio::main]
 async fn main() {
+     println!("{:?}", env::var("CARGO_MANIFEST_DIR"));
      dotenv().ok();
      let db_url: String = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
 
-     establish_db_connection(db_url.clone());
+     PgConnection::establish(&db_url)
+         .unwrap_or_else(|_| panic!("Error connecting to {}", db_url));
      let pool: Pool<Manager, Object> = setup_connection_pool(db_url.clone());
 
      // run the migrations on server startup
