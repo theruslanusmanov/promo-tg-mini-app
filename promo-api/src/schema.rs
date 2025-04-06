@@ -1,5 +1,5 @@
 diesel::table! {
-    promo_requests (id) {
+    requests (id) {
         id -> Int4,
         title -> Varchar,
     }
