@@ -1,21 +1,46 @@
 package main
 
 import (
-	"fmt"
+	"net/http"
+
+	api "github.com/el10savio/TODO-Fullstack-App-Go-Gin-Postgres-React/backend/api"
+
+	"github.com/gin-gonic/contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
-//TIP <p>To run your code, right-click the code and select <b>Run</b>.</p> <p>Alternatively, click
-// the <icon src="AllIcons.Actions.Execute"/> icon in the gutter and select the <b>Run</b> menu item from here.</p>
+// Function called for index
+func indexView(c *gin.Context) {
+	c.Header("Access-Control-Allow-Origin", "*")
+	c.Header("Access-Control-Allow-Headers", "access-control-allow-origin, access-control-allow-headers")
+	c.JSON(http.StatusOK, gin.H{"message": "TODO APP"})
+}
 
+// Setup Gin Routes
+func SetupRoutes() *gin.Engine {
+	// Use Gin as router
+	router := gin.Default()
+	config := cors.DefaultConfig()
+	config.AllowAllOrigins = true
+	router.Use(cors.New(config))
+
+	// Set route for index
+	router.GET("/", indexView)
+
+	// Set routes for API
+	// Update to POST, UPDATE, DELETE etc
+	router.GET("/items", api.TodoItems)
+	router.GET("/item/create/:item", api.CreateTodoItem)
+	router.GET("/item/update/:id/:done", api.UpdateTodoItem)
+	router.GET("/item/delete/:id", api.DeleteTodoItem)
+
+	// Set up Gin Server
+	return router
+}
+
+// Main function
 func main() {
-	//TIP <p>Press <shortcut actionId="ShowIntentionActions"/> when your caret is at the underlined text
-	// to see how GoLand suggests fixing the warning.</p><p>Alternatively, if available, click the lightbulb to view possible fixes.</p>
-	s := "gopher"
-	fmt.Println("Hello and welcome, %s!", s)
-
-	for i := 1; i <= 5; i++ {
-		//TIP <p>To start your debugging session, right-click your code in the editor and select the Debug option.</p> <p>We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-		// for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.</p>
-		fmt.Println("i =", 100/i)
-	}
+	api.SetupPostgres()
+	router := SetupRoutes()
+	router.Run(":8081")
 }
