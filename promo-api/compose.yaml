@@ -11,12 +11,12 @@ services:
   server:
     build:
       context: .
-      target: final
     ports:
       - 3000:3000
     depends_on:
       db:
         condition: service_healthy
+    network_mode: host
   db:
     image: postgres
     restart: always
