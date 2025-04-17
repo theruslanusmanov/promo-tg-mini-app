@@ -7,8 +7,6 @@ edition = "2021"
 axum = "0.8.3"
 deadpool-diesel = { version = "0.6.1", features = ["postgres"] }
 diesel = { version = "2.2.0", features = ["postgres"] }
-pq-sys = { version = "0.6", features = ["bundled"] }
-openssl-sys = { version = "0.9.100", features = ["vendored"] }
 #pq-sys = { version = "0.6", features = ["bundled"] }
 #openssl-sys = { version = "0.9.100", features = ["vendored"] }
 diesel_migrations = { version = "2.2.0", features = ["postgres"] }
