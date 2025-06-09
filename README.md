@@ -1,1 +1,1 @@
-# promo-tg-mini-app
+# Promo app
