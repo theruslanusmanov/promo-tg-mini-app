@@ -14,10 +14,8 @@ export class App {
   ])
 
   add() {
-    console.log('ADD')
     const list = this.list();
     list.push('Заявка ' + (this.list().length + 1))
     this.list.set(list);
-    console.log(this.list());
   }
 }
