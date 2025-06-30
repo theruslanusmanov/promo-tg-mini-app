@@ -10,9 +10,14 @@
 services:
   server:
     build:
-      context: .
+      context: promo-api
     ports:
       - 3000:3000
+  app:
+    build:
+      context: promo-app
+    ports:
+      - 4200:4200
 #    depends_on:
 #      db:
 #        condition: service_healthy
