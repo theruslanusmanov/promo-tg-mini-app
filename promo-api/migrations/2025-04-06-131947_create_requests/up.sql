@@ -1,4 +1,0 @@
-CREATE TABLE requests (
-   id SERIAL PRIMARY KEY,
-   title VARCHAR NOT NULL
-)
