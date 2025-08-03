@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 8px;
+}
+
+.card {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 24px;
+  background-color: white;
+  border-radius: 16px;
+  padding: 16px 20px;
+}
+
+.card__block {
+  display: flex;
+  flex-flow: column nowrap;
+}
