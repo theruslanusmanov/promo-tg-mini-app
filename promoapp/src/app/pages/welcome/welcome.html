@@ -7,7 +7,8 @@
       <label nz-radio-button nzValue="A">Канал</label>
       <label nz-radio-button nzValue="B">Товар</label>
       <label nz-radio-button nzValue="C">Другое</label>
-    </nz-radio-group></div>
+    </nz-radio-group>
+  </div>
   <div class="card__block">
     <h2>Форматы рекламы</h2>
     <nz-radio-group [(ngModel)]="radioValue2">
@@ -26,7 +27,51 @@
   </div>
   <div class="card__block">
     <h2>Покупатель</h2>
-    <input nz-input placeholder="@username" [(ngModel)]="value" type="number" />
+    <input nz-input placeholder="@username" [(ngModel)]="value" type="number"/>
+  </div>
+</div>
+<div class="card">
+  <div class="card__block"><h2>Пост</h2>
+    <nz-radio-group [(ngModel)]="radioValue" nzButtonStyle="solid">
+      <label nz-radio-button nzValue="A">Канал</label>
+      <label nz-radio-button nzValue="B">Товар</label>
+      <label nz-radio-button nzValue="C">Другое</label>
+    </nz-radio-group>
+  </div>
+  <div class="card__block">
+    <h2>Форматы размещения</h2>
+    <nz-select ngModel="lucy">
+      <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
+      <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+      <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
+    </nz-select>
+    <nz-select ngModel="lucy">
+      <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
+      <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+      <nz-option nzValue="disabled" nzLabel="Disabled" nzDisabled></nz-option>
+    </nz-select>
+  </div>
+
+  <div class="card__block">
+    <h2>Формат оплаты</h2>
+    <nz-radio-group [(ngModel)]="radioValue2">
+      @for (o of options; track o.value) {
+        <label nz-radio [nzValue]="o.value">{{ o.label }}</label>
+      }
+    </nz-radio-group>
+  </div>
+
+  <div class="card__block">
+    <h2>Размещение в одно время</h2>
+    <nz-switch [(ngModel)]="switchValue"></nz-switch>
+  </div>
+
+  <div class="card__block">
+    <h2>Дата и время размещения</h2>
+    <nz-space>
+      <nz-date-picker *nzSpaceItem [nzMode]="'date'"></nz-date-picker>
+      <nz-time-picker [(ngModel)]="time" nzSize="large"></nz-time-picker>
+    </nz-space>
   </div>
 </div>
 <div class="card">

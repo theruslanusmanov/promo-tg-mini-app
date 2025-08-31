@@ -4,6 +4,10 @@ import {FormsModule} from '@angular/forms';
 import {NzOptionComponent, NzSelectComponent} from 'ng-zorro-antd/select';
 import {NzInputDirective} from 'ng-zorro-antd/input';
 import {NzButtonComponent} from 'ng-zorro-antd/button';
+import {NzDatePickerComponent} from 'ng-zorro-antd/date-picker';
+import {NzSpaceComponent, NzSpaceItemDirective} from 'ng-zorro-antd/space';
+import {NzSwitchComponent} from 'ng-zorro-antd/switch';
+import {NzTimePickerComponent} from 'ng-zorro-antd/time-picker';
 
 @Component({
   selector: 'app-welcome',
@@ -14,12 +18,19 @@ import {NzButtonComponent} from 'ng-zorro-antd/button';
     NzSelectComponent,
     NzOptionComponent,
     NzInputDirective,
-    NzButtonComponent
+    NzButtonComponent,
+    NzDatePickerComponent,
+    NzSpaceItemDirective,
+    NzSpaceComponent,
+    NzSwitchComponent,
+    NzTimePickerComponent
   ],
   templateUrl: './welcome.html',
   styleUrl: './welcome.scss'
 })
 export class Welcome {
+  time = new Date();
+  switchValue = false;
   value = ''
   radioValue = 'A';
   radioValue2 = 'Apple';
